@@ -1,6 +1,10 @@
 package com.Aniramki.SafetyNet.controller;
 
+import com.Aniramki.SafetyNet.model.FireStation;
 import com.Aniramki.SafetyNet.model.Person;
+import com.Aniramki.SafetyNet.service.DTO.AdultChildDto;
+import com.Aniramki.SafetyNet.service.DTO.FireStationDto;
+import com.Aniramki.SafetyNet.service.DTO.FloodDto;
 import com.Aniramki.SafetyNet.service.FireStationService;
 import com.Aniramki.SafetyNet.service.PersonService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +28,14 @@ public class FireStationController {
         List<String> adress = this.fireStationService.findAllAdressByFS(stationNumber);
         List<String> phones = this.fireStationService.findAllPhonesPersonByAdress(adress);
          return phones;
-
     }
 
-//    @RequestMapping(value = "firestation", method = RequestMethod.GET)
-//    public List<String> ListePersonsAdultsEnfants(@RequestParam(name = "stationNumber") String stationNumber) {
-//        List<String> adress = this.fireStationService.findAllAdressByFS(stationNumber);
-//        List<String> personList = this.fireStationService.findAllPersonByAdress(adress);
-//        return personList;
-//
-//    }
+
+
+    @RequestMapping(value = "/flood/stations", method = RequestMethod.GET)
+    public List<FloodDto> floodDtoList(@RequestParam List<String> stations) {
+        return this.fireStationService.findFloodDtos(stations);
+    }
+
+
 }

@@ -2,12 +2,22 @@ package com.Aniramki.SafetyNet.service.DTO;
 
 import java.util.List;
 
-public class PersonInfoDto {
+public class FireDto {
     private String lastName;
-    private String address;
+    private String telephone;
     private int age;
     private List<String> medications;
     private List<String> allergies;
+
+    public String getFirestation() {
+        return firestation;
+    }
+
+    public void setFirestation(String firestation) {
+        this.firestation = firestation;
+    }
+
+    private String firestation;
 
     public String getLastName() {
         return lastName;
@@ -17,12 +27,12 @@ public class PersonInfoDto {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setAdress(String address) {
-        this.address = address;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public int getAge() {
@@ -49,13 +59,22 @@ public class PersonInfoDto {
         this.allergies = allergies;
     }
 
-    public PersonInfoDto(String lastName, String address, int age, List<String> medications, List<String> allergies) {
+    public FireDto(String lastName, String telephone, int age, List<String> medications, List<String> allergies, String firestation) {
         this.lastName = lastName;
-        this.address = address;
+        this.telephone = telephone;
+        this.age = age;
+        this.medications = medications;
+        this.allergies = allergies;
+        this.firestation = firestation;
+    }
+
+    public FireDto(String lastName, String telephone, int age, List<String> medications, List<String> allergies) {
+        this.lastName = lastName;
+        this.telephone = telephone;
         this.age = age;
         this.medications = medications;
         this.allergies = allergies;
     }
 
-    public PersonInfoDto() {}
+    public FireDto() {}
 }

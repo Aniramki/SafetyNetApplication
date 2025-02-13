@@ -17,4 +17,14 @@ public class FireStationRepository {
     public List<FireStation> findAllFS() {
         return dataHandler.getData().getFirestations();
     }
+
+    public FireStation findFsByAddress(String address) {
+        return findAllFS().stream()
+                .filter(f -> f.getAddress().equals(address))
+                //.map(FireStation::getStation)
+                .findFirst().orElseGet(() -> new FireStation());
+                //.orElse("No fire station found for this address");
+    }
+
+
 }
