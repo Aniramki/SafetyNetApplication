@@ -8,6 +8,7 @@ import com.Aniramki.SafetyNet.repository.MedicalRecordsRepository;
 import com.Aniramki.SafetyNet.repository.PersonRepository;
 import com.Aniramki.SafetyNet.service.DTO.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,6 +122,22 @@ public AdultChildDto findNumberChildsAndAdultes () {
             floodDtoList.add(dto4);
         }
         return floodDtoList;
+    }
+
+    public FireStation addNewStation(FireStation fireStation) {
+        List<FireStation> fireStationList = fireStationRepository.findAllFS();
+        fireStationList.add(fireStation);
+        return fireStation;
+    }
+
+    public FireStation updatefirestation(FireStation firestation) {
+        FireStation fireStation = new FireStation();
+        List<FireStation> fireStationList = fireStationRepository.findAllFS();
+        if (firestation.getStation()!= null) {
+            // fireStation = fireStationList.stream().flatMap(f -> fireStationRepository.findFsByStationNumber(f.getStation()));
+        }
+
+        return fireStation;
     }
 
 }

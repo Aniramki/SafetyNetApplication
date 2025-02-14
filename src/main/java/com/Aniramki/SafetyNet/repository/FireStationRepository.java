@@ -1,6 +1,7 @@
 package com.Aniramki.SafetyNet.repository;
 
 import com.Aniramki.SafetyNet.model.FireStation;
+import com.Aniramki.SafetyNet.model.Person;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,6 +25,14 @@ public class FireStationRepository {
                 //.map(FireStation::getStation)
                 .findFirst().orElseGet(() -> new FireStation());
                 //.orElse("No fire station found for this address");
+    }
+
+    public FireStation findFsByStationNumber(String station) {
+        return findAllFS().stream()
+                .filter(f -> f.getStation().equals(station))
+                //.map(FireStation::getStation)
+                .findFirst().orElseGet(() -> new FireStation());
+        //.orElse("No fire station found for this address");
     }
 
 
