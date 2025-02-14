@@ -1,6 +1,9 @@
 package com.Aniramki.SafetyNet.service.DTO;
 
 import java.util.List;
+//import com.fasterxml.jackson.annotation.JsonInclude;
+//
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class FireDto {
     private String lastName;

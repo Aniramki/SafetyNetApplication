@@ -67,20 +67,46 @@ public class PersonService {
         return fireDtos;
     }
 
-    public Person addNewPerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
-        Person person2 = new Person();
-        person2.setAddress(address);
-        person2.setCity(city);
-        person2.setEmail(email);
-        person2.setPhone(phone);
-        person2.setZip(zip);
-        person2.setFirstName(firstName);
-        person2.setLastName(lastName);
+//    public Person addNewPerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
+//        Person person2 = new Person();
+//        person2.setAddress(address);
+//        person2.setCity(city);
+//        person2.setEmail(email);
+//        person2.setPhone(phone);
+//        person2.setZip(zip);
+//        person2.setFirstName(firstName);
+//        person2.setLastName(lastName);
+//        return person2;
+//    }
+
+    public Person addNewPerson(Person person2) {
+
+       // Person person2 = new Person();
+        personRepository.addPerson(person2);
+        System.out.println("Person added to list: " + person2.getFirstName() + " " + person2.getLastName());
         return person2;
     }
 
+public  Person updatePerson(Person person) {
+
+      Person person1 = personRepository.findPersonByFirstNameAndLastName(person.getFirstName(), person.getLastName());
+    person1.setZip(person.getZip());
+    person1.setAddress(person.getAddress());
+    person1.setPhone(person.getPhone());
+    person1.setCity(person.getCity());
+    person1.setEmail(person.getEmail());
+       return person1;
+}
+
+    public void deletePerson(String firstName, String lastName) {
+Person person = personRepository.findPersonByFirstNameAndLastName(firstName, lastName);
+         //person = personRepository.findPersonByFirstNameAndLastName(person.getFirstName(), person.getLastName());
+
+      List<Person> personList = personRepository.findAllPersons();
+      personList.remove(person);
+        System.out.println(personList.toString()+personList.size());
 
 
-
+    }
 
 }

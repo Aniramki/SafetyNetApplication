@@ -32,9 +32,15 @@ public class PersonRepository {
         List<Person> personList = (List<Person>) dataHandler.getData().getPersons()
                 .stream()
                 .filter(p -> p.getAddress().equals(address))
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
 
         return personList;}
+
+    public Person addPerson(Person person) {
+        List<Person> personList = (List<Person>) dataHandler.getData().getPersons();
+        personList.add(person);
+        return person;
+    }
 
 
 
