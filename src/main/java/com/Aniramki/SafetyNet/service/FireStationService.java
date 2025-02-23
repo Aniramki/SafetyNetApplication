@@ -130,14 +130,22 @@ public AdultChildDto findNumberChildsAndAdultes () {
         return fireStation;
     }
 
-    public FireStation updatefirestation(FireStation firestation) {
-        FireStation fireStation = new FireStation();
-        List<FireStation> fireStationList = fireStationRepository.findAllFS();
-        if (firestation.getStation()!= null) {
-            // fireStation = fireStationList.stream().flatMap(f -> fireStationRepository.findFsByStationNumber(f.getStation()));
-        }
-
-        return fireStation;
+    public FireStation updatefirestation(FireStation fireStation) {
+        //FireStation fireStation1 = new FireStation();
+        FireStation fireStation1 = fireStationRepository.findFsByAddress(fireStation.getAddress());
+            fireStation1.setStation(fireStation.getStation());
+            return fireStation1;
     }
+
+    public void deletefirestation(String stationNumber, String stationAddress ) {
+        List<FireStation> fireStationList = fireStationRepository.findAllFS();
+    //FireStation fireStation = new FireStation(); we can`n because it`s empty
+        if (stationAddress != null) {
+            String num = fireStationRepository.findFsByAddress(stationAddress).getStation();
+        fireStationList.removeIf(fireStation -> fireStation.getStation().equals(num));
+    } else if (stationNumber != null) {
+        fireStationList.removeIf(fireStation -> fireStation.getStation().equals(stationNumber));
+    }
+}
 
 }

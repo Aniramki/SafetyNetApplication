@@ -1,13 +1,8 @@
 package com.Aniramki.SafetyNet.controller;
 
 import com.Aniramki.SafetyNet.model.Person;
-//import com.Aniramki.SafetyNet.model.FireStation;
-
-import com.Aniramki.SafetyNet.repository.PersonRepository;
-import com.Aniramki.SafetyNet.service.DTO.AdultChildDto;
 import com.Aniramki.SafetyNet.service.DTO.ChildAlertDto;
 import com.Aniramki.SafetyNet.service.DTO.FireDto;
-import com.Aniramki.SafetyNet.service.DTO.FloodDto;
 import com.Aniramki.SafetyNet.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 

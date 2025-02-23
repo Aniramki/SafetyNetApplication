@@ -47,7 +47,14 @@ public class FireStationController {
     @PutMapping("/firestation")
     public FireStation updatefirestation(@RequestBody FireStation firestation)
     {
-        return fireStationService.updateFirestation(firestation);
+        return fireStationService.updatefirestation(firestation);
     }
+
+    @DeleteMapping("/firestation")
+    public void deleteFireStation(@RequestParam(name = "stationNumber", required = false) String stationNumber,
+                                         @RequestParam(name = "stationAddress", required = false) String stationAddress) {
+         fireStationService.deletefirestation(stationNumber, stationAddress);
+    }
+
 
 }
